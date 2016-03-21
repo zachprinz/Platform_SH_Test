@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html style="height:100%; width:100%;">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/css.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('vendor/perfect_scrollbar/css/perfect-scrollbar.css') }}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block title %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('js/inobounce.js') }}"></script>
+            <script src="{{ asset('js/fastclick.js') }}"></script>
+            <script src="{{ asset('vendor/perfect_scrollbar/js/perfect-scrollbar.js') }}"></script>
+        {% endblock %}
+
+    </head>
+
+    <body style="width:100%; height:100%; max-height:10000000px;">
+
+
+        <header id="cognized_header">
+            <h1 style="color:white"> <center>Cognized <i class="fa fa-leaf"></i></center> </h1>
+        </header>
+
+        <script src="{{ asset('js/init_fastclicks.js') }}"></script>
+
+        <div id="overview">
+            <div id="overview_label">
+                <h3 id="subject_label">{% block subject_label %}{% endblock %}</h3>
+                <h1 id="topic_label">{% block topic_label %}{% endblock %}</h1>
+            </div>
+            <div id="overview_text" class="jumbotron">
+                {% block phone_topic_label %}{% endblock %}
+                {% block overview_text %} {% endblock %}
+            </div>
+        </div>
+
+        <main id="body">
+            <nav id="content_filter_navbar" class="navbar navbar-full navbar-dark bg-inverse" role="navigation">
+                <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+                    <i class="fa fa-filter"></i>
+                </button>
+                <div class="collapse navbar-toggleable-md" id="navbar-header">
+                    <p class="filter_bar_label">Content Length</p>
+                    <div class="filter_bar_button_group btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Quick</button>
+                        <button type="button" class="btn btn-primary">In Depth</button>
+                    </div>
+                    <p class="filter_bar_label">Sort By</p>
+                    <div class="filter_bar_button_group btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-primary">Highest</button>
+                        <button type="button" class="btn btn-primary">Recent</button>
+                    </div>
+                    <div class="navbar_right_element btn-group pull-right"  data-toggle="buttons" role="group" aria-label="Basic example" data-toggle="buttons">
+                        {% block content_filter_buttons %}{% endblock %}
+                    </div>
+                    <p class="filter_bar_label pull-xs-right">Content Types</p>
+                </div>
+            </nav>
+
+            <div id="content_row" class="row">
+                <div id="content_column" class="col-md-8"align="center">
+                    <div id="content" style="display:block;flex-grow:0;align-self:center;">
+                        {% block content %}{% endblock %}
+                    </div>
+                    {% block author_block %}{% endblock %}
+                </div>
+                <div id="content_viewer_column" class="col-md-4" >
+                    <div id="content_cards" class="card-columns">
+                        {% block content_column %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="{{ asset('js/resize_overview.js') }}"></script>
+
+        <footer>
+            <p><center>Copyright 2016</center></p>
+        </footer>
+        <script src="{{ asset('js/init_perfect_scrollbar.js') }}"></script>
+
+    </body>
+
+</html>
